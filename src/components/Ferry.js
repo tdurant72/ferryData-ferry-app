@@ -49,7 +49,7 @@ class Ferry extends React.Component {
             <div>
                 <div className="container">
 
-                    <div className="active-recipe">
+                    <div className="active-recipe" >
                         {/* <img className="active-recipe__img" src={ferry.Class.DrawingImg} alt={ferry.VesselName} /> */}
                         <h3 className="active-recipe__title">{ferry.VesselName}</h3>
                         <p>{ferry.ADAInfo}</p>

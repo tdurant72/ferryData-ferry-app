@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+
 const Ferries = (props) => {
     return (
         <div className="container">
@@ -7,7 +8,7 @@ const Ferries = (props) => {
                 {props.ferries.map((ferry) => {
                     return (
                         <div className="col-md-3" key={ferry.VesselID} style={{ marginBottom: "1rem" }}>
-                            <div className="recipes__box">
+                            <div className="recipes__box" >
                                 <h3>{ferry.VesselName}</h3>
                                 <p>{ferry.VesselID}</p>
                                 {/* <img className="recipe__box-img" src={recipe.image_url} alt={recipe.title} />
