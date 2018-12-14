@@ -1,0 +1,119 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Old Baldy Lighthouse",
+        "description": "<img src=\"https://lh6.googleusercontent.com/proxy/fMYgMgJakZ0Adoi-2sVH1EzfLil27mk_248VsYQKw9FCUsXLxSmNMAOncbo3aHkRFrwX6xgyUKBP2jzpNw6VXg4XUDr-xvbsi1Ap\" height=\"200\" width=\"auto\" /><br><br>Find out more about Old Baldy Lighthouse here! (http://ncpedia.org/old-baldy-lighthouse)<br><br>Did you know?<br>First lit in 1817, Old Baldy is the oldest standing lighthouse in North Carolina.",
+        "gx_media_links": "https://lh6.googleusercontent.com/proxy/fMYgMgJakZ0Adoi-2sVH1EzfLil27mk_248VsYQKw9FCUsXLxSmNMAOncbo3aHkRFrwX6xgyUKBP2jzpNw6VXg4XUDr-xvbsi1Ap",
+        "marker-symbol": "lighthouse"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.915039,
+          33.870416
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "lighthouse",
+        "Name": "Currituck Beach Lighthouse",
+        "description": "<img src=\"https://lh4.googleusercontent.com/proxy/PLS0QrFRSx4cQBII0agvHowjZ7LZvN2nCiUIlFvbOehzD3hHQIIuUUozqxhH49GlWJo5HMDcdPvitvoRyomvOKtiQSdV4pmOTIWgepmOycTH\" height=\"200\" width=\"auto\" /><br><br>Image courtesy of the State Archives of North Carolina (http://www.flickr.com/photos/north-carolina-state-archives/5387071431/)<br><br>Find out more about the Currituck Beach Lighthouse here! (http://ncpedia.org/currituck-beach-lighthouse)<br><br>Did you know?<br>Lit December 1, 1875, Currituck Beach Lighthouse was the last major brick lighthouse built on the Outer Banks.",
+        "gx_media_links": "https://lh4.googleusercontent.com/proxy/PLS0QrFRSx4cQBII0agvHowjZ7LZvN2nCiUIlFvbOehzD3hHQIIuUUozqxhH49GlWJo5HMDcdPvitvoRyomvOKtiQSdV4pmOTIWgepmOycTH"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.830625,
+          36.376658
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Oak Island Lighthouse",
+        "description": "<img src=\"https://lh4.googleusercontent.com/proxy/QZtV9FZ6t09Xo7fwdXEBZh0D9RhlCP4i0OGuqAgIdodI_PhLBW7PSi1q41ChIx6873sYOTxaj_eg-5Wiya1xUKT4-nt9cMZkBpCnEmA4K9nS\" height=\"200\" width=\"auto\" /><br><br>Image courtesy of the State Archives of North Carolina (http://www.flickr.com/photos/north-carolina-state-archives/5387674258/)<br><br>Find out more about Oak Island Lighthouse here! (http://ncpedia.org/oak-island-lighthouse)<br><br>Did you know?<br>Oak Island Lighthouse was first lit in 1958. Rather than having spiral staircases, as the older lighthouses have, Oak Island lighthouse is climbed using a series of ship ladders.",
+        "gx_media_links": "https://lh4.googleusercontent.com/proxy/QZtV9FZ6t09Xo7fwdXEBZh0D9RhlCP4i0OGuqAgIdodI_PhLBW7PSi1q41ChIx6873sYOTxaj_eg-5Wiya1xUKT4-nt9cMZkBpCnEmA4K9nS",
+        "marker-symbol": "lighthouse"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.034886,
+          33.89279
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Cape Hatteras Lighthouse",
+        "description": "<img src=\"https://lh3.googleusercontent.com/proxy/xZOfZELjbvN1PYab5URuW0rNGlpaQHqjzxI-5l4V5QwWY949S_PLb3QJ9rxRKgN8rrMGGQUae518NKZNS3ratTdzkyJUmNRmRrpz-WAq0fA5\" height=\"200\" width=\"auto\" /><br><br>Image courtesy of the State Archives of North Carolina (http://www.flickr.com/photos/north-carolina-state-archives/5387071235/)<br><br>Find out more about the Cape Hatteras Lighthouse here! (http://ncpedia.org/cape-hatteras-lighthouse)<br><br>Did you know?<br>The Hatteras Lighthouse was first lit in December 1870, but the famous black and white stripes were not painted until 1873.",
+        "gx_media_links": "https://lh3.googleusercontent.com/proxy/xZOfZELjbvN1PYab5URuW0rNGlpaQHqjzxI-5l4V5QwWY949S_PLb3QJ9rxRKgN8rrMGGQUae518NKZNS3ratTdzkyJUmNRmRrpz-WAq0fA5",
+        "marker-symbol": "lighthouse"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.528967,
+          35.250526
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Cape Lookout Lighthouse",
+        "description": "<img src=\"https://lh5.googleusercontent.com/proxy/3o9AayzCPpbM-2tnx32RGAbC1eR4UUKB-cU9SSRlrP9NxlPn5stdD0n0PFmmjmZXc_F_NloZrAXlP7b_N_FslcY5xxkhffS9DO8a_gME8sLD\" height=\"200\" width=\"auto\" /><br><br>Image courtesy of the State Archives of North Carolina (http://www.flickr.com/photos/north-carolina-state-archives/5387674580/)<br><br>Find out more about the Cape Lookout Lighthouse here! (http://ncpedia.org/cape-lookout-light-station)<br><br>Did you know?<br>The existing Cape Lookout Lighthouse was first lit in 1859, but the original lighthouse on Cape Lookout Seashore was built in 1812.",
+        "gx_media_links": "https://lh5.googleusercontent.com/proxy/3o9AayzCPpbM-2tnx32RGAbC1eR4UUKB-cU9SSRlrP9NxlPn5stdD0n0PFmmjmZXc_F_NloZrAXlP7b_N_FslcY5xxkhffS9DO8a_gME8sLD",
+        "marker-symbol": "lighthouse"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.524518,
+          34.622808
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Ocracoke Lighthouse",
+        "description": "<img src=\"https://lh4.googleusercontent.com/proxy/xrcYIaBfDseXI5ACiiKNcXHImj03pa6zFN9w2bypA9jjnDfM1nlI0cPZEhE_4eKwfAMutTUGbF_v3deno07LsAva_yw1u4dPdxpdzLiuOt_A\" height=\"200\" width=\"auto\" /><br><br>Image courtesy of the State Archives of North Carolina (http://www.flickr.com/photos/north-carolina-state-archives/5387071195/)<br><br>Ocracoke Lighthouse was first lit in 1823, making it the oldest still-operating lighthouse on the Outer Banks. Find out more about North Carolina Lighthouses here! (http://ncpedia.org/lighthouses)",
+        "gx_media_links": "https://lh4.googleusercontent.com/proxy/xrcYIaBfDseXI5ACiiKNcXHImj03pa6zFN9w2bypA9jjnDfM1nlI0cPZEhE_4eKwfAMutTUGbF_v3deno07LsAva_yw1u4dPdxpdzLiuOt_A",
+        "marker-symbol": "lighthouse"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.985962,
+          35.108929
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Bodie Island Lighthouse",
+        "description": "<img src=\"https://lh6.googleusercontent.com/proxy/AJG5YWyNNNQtid5p3aLv99CsLv_T8HE9sgoDQNYdfdZBxTup_sV-IZCGP9gMAU9W2-hZ0HdQm5EF207qnSJEcnufjWbwrEm4rAepp0i-z9Q_\" height=\"200\" width=\"auto\" /><br><br>Image courtesy of the State Archives of North Carolina (http://www.flickr.com/photos/north-carolina-state-archives/5387674490/)<br><br>The existing Bodie Island Lighthouse was first lit in 1872. Find out more about North Carolina lighthouses here (http://ncpedia.org/lighthouses)!",
+        "gx_media_links": "https://lh6.googleusercontent.com/proxy/AJG5YWyNNNQtid5p3aLv99CsLv_T8HE9sgoDQNYdfdZBxTup_sV-IZCGP9gMAU9W2-hZ0HdQm5EF207qnSJEcnufjWbwrEm4rAepp0i-z9Q_",
+        "marker-symbol": "lighthouse"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.563943,
+          35.818257
+        ]
+      }
+    }
+  ]
+}
