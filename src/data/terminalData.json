@@ -1,0 +1,295 @@
+{
+   "rss": {
+      "channel": {
+         "title": "Ferry Routes",
+         "link": "",
+         "description": "Ferry Routes",
+         "streetaddy": "#",
+         "phone": "#",
+         "mappointIntlCode": "",
+         "item": [
+            {
+               "title": "Aurora Ferry Terminal",
+               "description": {
+                  "__cdata": "\n            <div>\n            <a class=\"pdf\" target=\"_blank\" href=\"/travel-maps/ferry-tickets-services/Documents/ferryschedule.pdf\">Ferry Schedule</a>\n            <span class=\"bing-map__infobox-heading\">Contact</span>\n            <div>\n                <ul style='list-style-type: none; padding: 0;'>\n                    <li><a target=\"_blank\" href=\"https://www.bing.com/maps?where1=NC+Hwy.+306+South,Aurora,NC,27806\">N.C. Highway 306 South<br />Aurora, NC 27806</a></li>\n                    <li><a href=\"tel:2529644521\">(252) 964-4521</a></li>\n                </ul>\n            </div>\n                </div>\n                "
+               },
+               "streetaddy": "N.C. Highway 306 South, NC 27806",
+               "phone": "(252) 964-4521",
+               "lat": [
+                  {
+                     "__text": "35.37777770602742"
+                  },
+                  "35.37777770602742"
+               ],
+               "long": [
+                  {
+                     "__text": "-76.75007656216621"
+                  },
+                  "-76.75007656216621"
+               ],
+               "icon": "http://www.ncdot.gov/_graphics/site_graphics/transit_ferry_mapicon_boat.gif"
+            },
+            {
+               "title": "Bayview Ferry Terminal",
+               "description": {
+                  "__cdata": "\n            <div>\n            <a class=\"pdf\" target=\"_blank\" href=\"/travel-maps/ferry-tickets-services/Documents/ferryschedule.pdf\">Ferry Schedule</a>\n            <span class=\"bing-map__infobox-heading\">Contact</span>\n            <div>\n                <ul style='list-style-type: none; padding: 0;'>\n                    <li><a target=\"_blank\" href=\"https://www.bing.com/maps?where1=229+NC+Hwy.+306,North+Bath,NC,27808\">229 N.C. Highway 306 North<br />Bath, NC 27808</a></li>\n                    <li><a href=\"tel:2529644521\">(252) 964-4521</a></li>\n                </ul>\n            </div>\n                </div>\n                "
+               },
+               "streetaddy": "229 N.C. Highway 306 North Bath, NC 27808",
+               "phone": "(252) 964-4521",
+               "lat": [
+                  {
+                     "__text": "35.427915994997505"
+                  },
+                  "35.427915994997505"
+               ],
+               "long": [
+                  {
+                     "__text": "-76.74074918031694"
+                  },
+                  "-76.74074918031694"
+               ],
+               "icon": "http://www.ncdot.gov/_graphics/site_graphics/transit_ferry_mapicon_boat.gif"
+            },
+            {
+               "title": "Cedar Island Ferry Terminal",
+               "description": {
+                  "__cdata": "\n            <div>\n            <a class=\"pdf\" target=\"_blank\" href=\"/travel-maps/ferry-tickets-services/Documents/ferryschedule.pdf\">Ferry Schedule</a>\n            <span class=\"bing-map__infobox-heading\">Contact</span>\n            <div>\n                <ul style='list-style-type: none; padding: 0;'>\n                    <li><a target=\"_blank\" href=\"https://www.bing.com/maps?where1=3619+Cedar+Island+Road,Cedar+Island,NC,28520\">3619 Cedar Island Road<br />Cedar Island, NC 28520</a></li>\n                    <li><a href=\"tel:18002933779\">(800) 293-3779 (Reservations)</a></li>\n                    <li><a href=\"tel:2524637040\">(252) 463-7040</a></li>\n                </ul>\n            </div>\n        </div>\n        "
+               },
+               "streetaddy": "3619 Cedar Island Road Cedar Island, NC 28520",
+               "phone": "(252) 463-7040",
+               "lat": [
+                  {
+                     "__text": "35.018565"
+                  },
+                  "35.018565"
+               ],
+               "long": [
+                  {
+                     "__text": "-76.31425"
+                  },
+                  "-76.31425"
+               ],
+               "icon": "http://www.ncdot.gov/_graphics/site_graphics/transit_ferry_mapicon_boat.gif",
+               "_reservations": "true"
+            },
+            {
+               "title": "Cherry Branch Ferry Terminal",
+               "description": {
+                  "__cdata": "\n            <div>\n            <a class=\"pdf\" target=\"_blank\" href=\"/travel-maps/ferry-tickets-services/Documents/ferryschedule.pdf\">Ferry Schedule</a>\n            <span class=\"bing-map__infobox-heading\">Contact</span>\n            <div>\n                <ul style='list-style-type: none; padding: 0;'>\n                    <li><a target=\"_blank\" href=\"https://www.bing.com/maps?where1=2300+Ferry+Road,Havelock,NC,28532\">2300 Ferry Road<br />Havelock, NC 28532</a></li>\n                    <li><a href=\"tel:2524637000\">(252) 463-7000</a></li>\n                </ul>\n            </div>\n        </div>\n        "
+               },
+               "streetaddy": "2300 Ferry Road Havelock, NC 28532",
+               "phone": "(252) 463-7000",
+               "lat": [
+                  {
+                     "__text": "34.935469"
+                  },
+                  "34.935469"
+               ],
+               "long": [
+                  {
+                     "__text": "-76.812369"
+                  },
+                  "-76.812369"
+               ],
+               "icon": "http://www.ncdot.gov/_graphics/site_graphics/transit_ferry_mapicon_boat.gif"
+            },
+            {
+               "title": "Currituck Ferry Terminal",
+               "description": {
+                  "__cdata": "\n            <div>\n            <a class=\"pdf\" target=\"_blank\" href=\"/travel-maps/ferry-tickets-services/Documents/ferryschedule.pdf\">Ferry Schedule</a>\n            <span class=\"bing-map__infobox-heading\">Contact</span>\n            <div>\n                <ul style='list-style-type: none; padding: 0;'>\n                    <li><a target=\"_blank\" href=\"https://www.bing.com/maps?where1=175+Courthouse+Road,Currituck,NC,27929\">175 Courthouse Road<br />Currituck, NC 27929</a></li>\n                    <li><a href=\"tel:2526216300\">(252) 621-6300</a></li>\n                </ul>\n            </div>\n                </div>\n                "
+               },
+               "streetaddy": "175 Courthouse Road Currituck, NC 27929",
+               "phone": "(252) 232-1434",
+               "lat": [
+                  {
+                     "__text": "36.449249"
+                  },
+                  "36.449249"
+               ],
+               "long": [
+                  {
+                     "__text": "-76.014193"
+                  },
+                  "-76.014193"
+               ],
+               "icon": "http://www.ncdot.gov/_graphics/site_graphics/transit_ferry_mapicon_boat.gif"
+            },
+            {
+               "title": "Fort Fisher Ferry Terminal",
+               "description": {
+                  "__cdata": "\n            <div>\n            <a class=\"pdf\" target=\"_blank\" href=\"/travel-maps/ferry-tickets-services/Documents/ferryschedule.pdf\">Ferry Schedule</a>\n            <span class=\"bing-map__infobox-heading\">Contact</span>\n            <div>\n                <ul style='list-style-type: none; padding: 0;'>\n                    <li><a target=\"_blank\" href=\"https://www.bing.com/maps?where1=2422+Fort+Fisher+Blvd.,Kure+Beach,NC,28449\">2422 S. Fort Fisher Blvd.<br />Kure Beach, NC 28449</a></li>\n                    <li><a href=\"tel:9102517310\">(910) 251-7310</a></li>\n                </ul>\n            </div>\n        </div>\n        "
+               },
+               "streetaddy": "2422 S. Fort Fisher Blvd. Kure Beach, NC 28449",
+               "phone": "(910) 251-7310",
+               "lat": [
+                  {
+                     "__text": "33.960123"
+                  },
+                  "33.960123"
+               ],
+               "long": [
+                  {
+                     "__text": "-77.938503"
+                  },
+                  "-77.938503"
+               ],
+               "icon": "http://www.ncdot.gov/_graphics/site_graphics/transit_ferry_mapicon_boat.gif"
+            },
+            {
+               "title": "Hatteras Ferry Terminal",
+               "description": {
+                  "__cdata": "\n            <div>\n            <a class=\"pdf\" target=\"_blank\" href=\"/travel-maps/ferry-tickets-services/Documents/ferryschedule.pdf\">Ferry Schedule</a>\n            <span class=\"bing-map__infobox-heading\">Contact</span>\n            <div>\n                <ul style='list-style-type: none; padding: 0;'>\n                    <li><a href=\"https://www.bing.com/maps?where1=59063+NC+Hwy+12+Hatteras,NC,27943\">59063 N.C. Highway 12<br />South Hatteras, NC 27943</a></li>\n                    <li><a href=\"tel:2529966000\">(252) 996-6000</a></li>\n                </ul>\n            </div>\n        </div>\n      "
+               },
+               "streetaddy": "59063 N.C. Highway 12 South Hatteras, NC 27943",
+               "phone": "(800) 368-8949",
+               "lat": [
+                  {
+                     "__text": "35.208049958670095"
+                  },
+                  "35.208049958670095"
+               ],
+               "long": [
+                  {
+                     "__text": "-75.7027155160904"
+                  },
+                  "-75.7027155160904"
+               ],
+               "icon": "http://www.ncdot.gov/_graphics/site_graphics/transit_ferry_mapicon_boat.gif"
+            },
+            {
+               "title": "Knotts Island Ferry Terminal",
+               "description": {
+                  "__cdata": "\n            <div>\n            <a class=\"pdf\" target=\"_blank\" href=\"/travel-maps/ferry-tickets-services/Documents/ferryschedule.pdf\">Ferry Schedule</a>\n            <span class=\"bing-map__infobox-heading\">Contact</span>\n            <div>\n                <ul style='list-style-type: none; padding: 0;'>\n                    <li><a target=\"_blank\" href=\"https://www.bing.com/maps?where1=Ferry+Dock+Road,Knotts+Island,NC\">Ferry Dock Road<br />Knotts Island, NC 27950</a></li>\n                    <li><a href=\"tel:2526216300\">(252) 621-6300</a></li>\n                </>\n            </div>\n                </div>\n                "
+               },
+               "streetaddy": "Ferry Dock Road Knotts Island, NC 27950",
+               "phone": "(252) 621-6300",
+               "lat": [
+                  {
+                     "__text": "36.483745103831005"
+                  },
+                  "36.483745103831005"
+               ],
+               "long": [
+                  {
+                     "__text": "-75.92673227190973"
+                  },
+                  "-75.92673227190973"
+               ],
+               "icon": "http://www.ncdot.gov/_graphics/site_graphics/transit_ferry_mapicon_boat.gif"
+            },
+            {
+               "title": "Minnesott Beach Ferry Terminal",
+               "description": {
+                  "__cdata": "\n            <div>\n            <a class=\"pdf\" target=\"_blank\" href=\"/travel-maps/ferry-tickets-services/Documents/ferryschedule.pdf\">Ferry Schedule</a>\n            <span class=\"bing-map__infobox-heading\">Contact</span>\n            <div>\n                <ul style='list-style-type: none; padding: 0;'>\n                    <li><a target=\"_blank\" href=\"https://www.bing.com/maps?where1=NC+Highway+306,+Minnesott+Beach,+NC+28510\">N.C. Highway 306<br /> Minnesott Beach, NC 28510</a></li>\n                    <li><a href=\"tel:2524637000\">(252) 463-7000</a></li>\n                </ul>\n            </div>\n                </div>\n                "
+               },
+               "streetaddy": "N.C. Highway 306 Minnesott Beach, NC 28510",
+               "phone": "(252) 463-7000",
+               "lat": [
+                  {
+                     "__text": "34.970006"
+                  },
+                  "34.970006"
+               ],
+               "long": [
+                  {
+                     "__text": "-76.806112"
+                  },
+                  "-76.806112"
+               ],
+               "icon": "http://www.ncdot.gov/_graphics/site_graphics/transit_ferry_mapicon_boat.gif"
+            },
+            {
+               "title": "Ocracoke Terminal - Silver Lake",
+               "description": {
+                  "__cdata": "\n            <div>\n            <a class=\"pdf\" target=\"_blank\" href=\"/travel-maps/ferry-tickets-services/Documents/ferryschedule.pdf\">Ferry Schedule</a>\n            <span class=\"bing-map__infobox-heading\">Contact</span>\n            <div>\n                <ul style='list-style-type: none; padding: 0;'>\n                    <li><a target=\"_blank\" href=\"https://www.bing.com/maps?where1=130+Pilot+Town+Circle,Ocracoke,NC,27960\">130 Pilot Town Circle<br />Ocracoke, NC 27960</a></li>\n                    <li><a href=\"tel:18002933779\">(800) 293-3779</a></li>\n                    <li><a href=\"tel:2529966201\">(252) 996-6201</a></li>\n                </ul>\n            </div>\n                </div>\n                "
+               },
+               "streetaddy": "130 Pilot Town Circle Ocracoke, NC 27960",
+               "phone": "252.996.6201",
+               "lat": [
+                  {
+                     "__text": "35.11508708623148"
+                  },
+                  "35.11508708623148"
+               ],
+               "long": [
+                  {
+                     "__text": "-75.9870994091034"
+                  },
+                  "-75.9870994091034"
+               ],
+               "icon": "http://www.ncdot.gov/_graphics/site_graphics/transit_ferry_mapicon_boat.gif",
+               "_reservations": "true"
+            },
+            {
+               "title": "Ocracoke Terminal - South Dock",
+               "description": {
+                  "__cdata": "\n            <div>\n            <a class=\"pdf\" target=\"_blank\" href=\"/travel-maps/ferry-tickets-services/Documents/ferryschedule.pdf\">Ferry Schedule</a>\n            <span class=\"bing-map__infobox-heading\">Contact</span>\n            <div>\n                <ul style='list-style-type: none; padding: 0;'>\n                    <li><a target=\"_blank\" href=\"https://www.bing.com/maps?where1=N.C.+Hwy.+12,Ocracoke,NC,27960\">N.C. Highway 12 <br />Ocracoke, NC 27960</a></li>\n                    <li><a href=\"tel:2529966000\">(252) 996-6000</a></li>\n                </ul>\n            </div>\n        </div>\n      "
+               },
+               "streetaddy": "N.C. Highway 12, Ocracoke, NC 27960",
+               "phone": "(252) 996-6000",
+               "lat": [
+                  {
+                     "__text": "35.19106180435745"
+                  },
+                  "35.19106180435745"
+               ],
+               "long": [
+                  {
+                     "__text": "-75.77851608395575"
+                  },
+                  "-75.77851608395575"
+               ],
+               "icon": "http://www.ncdot.gov/_graphics/site_graphics/transit_ferry_mapicon_boat.gif"
+            },
+            {
+               "title": "Southport Ferry Terminal",
+               "description": {
+                  "__cdata": "\n            <div>\n            <a class=\"pdf\" target=\"_blank\" href=\"/travel-maps/ferry-tickets-services/Documents/ferryschedule.pdf\">Ferry Schedule</a>\n            <span class=\"bing-map__infobox-heading\">Contact</span>\n            <div>\n                <ul style='list-style-type: none; padding: 0;'>\n                    <li><a target=\"_blank\" href=\"https://www.bing.com/maps?where1=1650+Ferry+Road,Southport,NC,28461\">1650 Ferry Road<br />Southport, NC 28461</a></li>\n                    <li><a href=\"tel:9104775200\">(910) 477-5200</a></li>\n                </ul>\n            </div>\n                </div>\n                "
+               },
+               "streetaddy": "1650 Ferry Road Southport, NC 28461",
+               "phone": "(910) 477-5200",
+               "lat": [
+                  {
+                     "__text": "33.934566"
+                  },
+                  "33.934566"
+               ],
+               "long": [
+                  {
+                     "__text": "-77.994244"
+                  },
+                  "-77.994244"
+               ],
+               "icon": "http://www.ncdot.gov/_graphics/site_graphics/transit_ferry_mapicon_boat.gif"
+            },
+            {
+               "title": "Swan Quarter Ferry Terminal",
+               "description": {
+                  "__cdata": "\n            <div>\n            <a class=\"pdf\" target=\"_blank\" href=\"/travel-maps/ferry-tickets-services/Documents/ferryschedule.pdf\">Ferry Schedule</a>\n            <span class=\"bing-map__infobox-heading\">Contact</span>\n            <div>\n                <ul style='list-style-type: none; padding: 0;'>\n                    <li><a target=\"_blank\" href=\"https://www.bing.com/maps?where1=748+Oyster+Creek+Road,Swan+Quarter,NC,27885\">748 Oyster Creek Road<br />Swan Quarter, NC 27885</a></li>\n                    <li><a href=\"tel:18002933779\">(800) 293-3779 (Reservations)</a></li>\n                    <li><a href=\"tel:2527913300\">(252) 791-3300</a></li>\n                </ul>\n            </div>\n        </div>\n        "
+               },
+               "streetaddy": "748 Oyster Creek Road Swan Quarter, NC 27885",
+               "phone": "(252) 791-3300",
+               "lat": [
+                  {
+                     "__text": "35.39494755677852"
+                  },
+                  "35.39494755677852"
+               ],
+               "long": [
+                  {
+                     "__text": "-76.33324921131134"
+                  },
+                  "-76.33324921131134"
+               ],
+               "icon": "http://www.ncdot.gov/_graphics/site_graphics/transit_ferry_mapicon_boat.gif",
+               "_reservations": "true"
+            }
+         ]
+      },
+      "_xmlns:geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
+      "_xmlns:georss": "http://www.georss.org/georss",
+      "_xmlns:gml": "http://www.opengis.net/gml",
+      "_xmlns:mappoint": "http://virtualearth.msn.com/apis/annotate#",
+      "_version": "2.0"
+   }
+}

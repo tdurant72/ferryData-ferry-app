@@ -1,4 +1,4 @@
-[
+const ferrySchedule = [
   {
     "text": "Aurora",
     "value": "0",
@@ -711,7 +711,7 @@
         "fare": "Free",
         "crossing": "",
         "seasons": [
-			{
+          {
             "dates": "Nov. 6-Dec. 31, 2018; March 5-April 8, 2019; Nov. 5-Dec. 31, 2019",
             "times": [
               {
@@ -1015,7 +1015,7 @@
                 "arrival": "1:00 a.m."
               }
             ]
-          }	,
+          },
           {
             "dates": "May 14-Sept. 30, 2019 (Mondays-Saturdays)",
             "times": [
@@ -1803,7 +1803,7 @@
                 "arrival": "1:00 a.m."
               }
             ]
-          },          
+          },
           {
             "dates": "April 9-May 13, 2019 & Oct. 1-Nov. 4, 2019",
             "times": [
@@ -2723,3 +2723,4 @@
     ]
   }
 ]
+export default ferrySchedule

@@ -1,0 +1,12 @@
+.ferry-data{
+    padding: 0px 20px;
+}
+.ferry-tr{
+    display: flex;
+    border-bottom: 2px solid #607d8b;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+.ferry-items{
+    padding: 5px 15px;
+}
