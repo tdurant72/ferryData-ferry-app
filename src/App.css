@@ -28,7 +28,7 @@ button:focus {
 }
 
 div#content-wrapper {
-  display: flex;
+  /* display: flex; */
   padding-top: 20px;
 }
 #map{
@@ -160,7 +160,7 @@ input:-webkit-autofill {
   font-weight: 500;
 }
 .map{
-  height: 800px;
+  height: 50vh;
   width: 100vw;
 }
 

@@ -1,0 +1,11 @@
+div#mapHolder {
+    display: flex;
+}
+div#mapTable {
+    max-width: 300px;
+    padding: 10px;
+}
+
+#mapTable > span {
+    display: flex;
+}
