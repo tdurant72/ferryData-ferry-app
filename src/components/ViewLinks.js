@@ -4,23 +4,24 @@ const linkStyle = {
     color: "#2c3e50",
     cursor: "pointer",
     fontSize: "1em",
+    borderBottom: "1px rgb(44,62,80) solid",
+    padding: "10px 0px"
 }
 
 class ViewLinks extends React.Component {
-    // console.log(props)
 
-    onClickHandler = (e) => {
-        e.title = this.props.title;
+    state = { updatedView: [] }
+    onHandleView(event, index) {
+        this.props.onClickView(this.props);
+        //console.log(this.props);
     }
     render() {
         return (
-            <span
-                style={linkStyle}
-
-                onClick={this.onClickHandler}
-            >{this.props.title}</span>
-        )
+            <span style={linkStyle}
+                onClick={this.onHandleView.bind(this, this.state.updatedView)} >
+                {this.props.properties.title}
+            </span>
+        );
     }
-
 }
 export default ViewLinks;

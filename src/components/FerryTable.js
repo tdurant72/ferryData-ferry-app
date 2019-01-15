@@ -11,6 +11,7 @@ const FerryTable = props => {
                 <thead>
                     <tr>
                         <th>Ferry Name</th>
+                        <th>Speed</th>
                         <th>Status</th>
                         <th>As of:</th>
                     </tr>
@@ -23,6 +24,9 @@ const FerryTable = props => {
                                 key={ncferry.properties['Vessel Name']}
                             >
                                 <td>{ncferry.properties['Vessel Name']}</td>
+                                <td>
+                                    {ncferry.properties.SOG}
+                                </td>
                                 <td>
                                     {ncferry.properties.SOG === "0 knots" ? "docked" : " underway"}
                                 </td>

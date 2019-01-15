@@ -30,10 +30,10 @@ button:focus {
 div#content-wrapper {
   /* display: flex; */
   padding-top: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
 }
-#map{
-  flex:2;
-}
+
 .recipe_buttons {
   border: solid 2px #e74c3c;
   background: transparent;
@@ -158,30 +158,4 @@ input:-webkit-autofill {
   font-size: 1rem;
   text-transform: uppercase;
   font-weight: 500;
-}
-.map{
-  height: 50vh;
-  width: 100vw;
-}
-
-.MicrosoftMap .Infobox{
-  width:200px;
-}
-.MicrosoftMap .Infobox .infobox-stalk{
-  top:155.8px;
-}
-.MicrosoftMap .Infobox .infobox-body{
-  width:170px;
-}
-.MicrosoftMap .Infobox .infobox-actions{
-  height: 25px;
-}
-.infobox_pointer{
-  width:33px;
-  height:38px;
-  overflow:hidden;
-  position:relative;
-  z-index:1;
-  left:20px;
-  top:-1px;
 }

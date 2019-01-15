@@ -68,7 +68,7 @@ class Map extends Component {
         var layer = new window.Microsoft.Maps.Layer();
         // console.log(terminalPushpin)
         // const terminalLocation = new window.Microsoft.Maps.Location(this.state.terminalLocation)
-        let anchor = new window.Microsoft.Maps.Point(0, 0)
+        let anchor = new window.Microsoft.Maps.Point(0, 10)
         // this.setState({ map, infobox, terminalPushpin, terminalLocation, anchor });
 
         this.setState({ map, terminalPushpin, anchor, layer });
@@ -120,7 +120,7 @@ class Map extends Component {
                 id: ncferry.properties['Vessel Name'],
                 icon: boatIcon,
                 //visible: true,
-                anchor: new window.Microsoft.Maps.Point(0, 0)
+                anchor: new window.Microsoft.Maps.Point(10, 0)
             });
             ncPin.metadata = {
                 id: ncferry.properties.VesseName,
@@ -128,58 +128,43 @@ class Map extends Component {
             };
             ncPin.setOptions({ visible: true });
             //this.setState({ pins, pin });
-            let title = ncferry.properties['Vessel Name'];
-            let description = "<strong>" +
-                "Current Latitude: " +
-                "</strong>" +
-                "<br>" +
-                ncferry.properties.Latitude +
-                "<br>" +
-                "<strong>" +
-                "Current Longitude: " +
-                "</strong>" +
-                "<br>" +
-                ncferry.properties.Longitude +
-                "<br>" +
-                "<strong>" +
-                "Bearing: " +
-                "</strong>" +
-                "<br>" +
-                ncferry.properties.COG;
-            ncPin.setOptions({ visible: true });
-            //this.setState({ pins, pin });
-            var infoboxTemplate = `<div id="infoboxText" style="background-color:White; border-style:solid; border-width:medium; border-color:#2c3e50; min-height:115px; height:150px; width: 240px; border-radius:7px;line-height: 1.2;">
-            <b id="infoboxTitle" style="position: absolute; top: 10px; left: 10px; width: 220px; ">{title}</b>
-            <p id="infoboxDescription" style="position: absolute; top: 30px; left: 10px; width: 220px;color:#2c3e50 ">{description}</p></div>`;
             var infobox = new window.Microsoft.Maps.Infobox(pinNCLocation, {
-                htmlContent: infoboxTemplate.replace('{title}', title).replace('{description}', description),
-
+                maxHeight: 350,
+                minHeight: 300,
+                maxWidth: 450,
+                title: ncferry.properties['Vessel Name'],
+                description:
+                    "<strong>" +
+                    "Current Latitude: " +
+                    "</strong>" +
+                    "<br>" +
+                    ncferry.properties.Latitude +
+                    "<br>" +
+                    "<strong>" +
+                    "Current Longitude: " +
+                    "</strong>" +
+                    "<br>" +
+                    ncferry.properties.Longitude
+                ,
                 showCloseButton: true,
-                offset: new window.Microsoft.Maps.Point(-110, 18),
+                autoAlignment: true,
                 visible: false,
+                // actions: [
+                //   {
+                //     label: "More",
+                //     eventHandler: function () {
+                //       console.log("more clicked");
+                //     }
+                //   },
+                //   {
+                //     label: "Close",
+                //     eventHandler: function () {
+                //       map.setView({ zoom: 9 });
+                //       infobox.setOptions({ visible: false });
+                //     }
+                //   }
+                // ]
             });
-            // var infobox = new window.Microsoft.Maps.Infobox(pinNCLocation, {
-            //     maxHeight: 350,
-            //     minHeight: 300,
-            //     maxWidth: 450,
-            //     title: ncferry.properties['Vessel Name'],
-            //     description:
-            //         "<strong>" +
-            //         "Current Latitude: " +
-            //         "</strong>" +
-            //         "<br>" +
-            //         ncferry.properties.Latitude +
-            //         "<br>" +
-            //         "<strong>" +
-            //         "Current Longitude: " +
-            //         "</strong>" +
-            //         "<br>" +
-            //         ncferry.properties.Longitude
-            //     ,
-            //     showCloseButton: true,
-            //     autoAlignment: true,
-            //     visible: false,
-            // });
             infobox.setMap(this.state.map);
 
             window.Microsoft.Maps.Events.addHandler(ncPin, "click", function () {
@@ -189,6 +174,7 @@ class Map extends Component {
             });
 
             window.Microsoft.Maps.Events.addHandler(map, "click", function () {
+                // this.state.map.setView({ center: this.map.center, zoom: 8 });
                 infobox.setOptions({ visible: false });
             });
 
@@ -233,72 +219,54 @@ class Map extends Component {
                 id: terminal.properties.title,
                 title: terminal.properties.title
             };
-
-            // let title = terminal.properties.title;
-            // let description = terminal.properties.address + "<br>" + terminal.properties.phone;
-            // terminalPin.setOptions({ visible: true });
-            // //this.setState({ pins, pin });
-            // var infoboxTemplate = `<div id="infoboxText" style="background-color:White; border-style:solid; border-width:medium; border-color:#2c3e50; min-height:115px; width: 240px; border-radius:7px;line-height: 1.2;">
-            // <b id="infoboxTitle" style="position: absolute; top: 10px; left: 10px; width: 220px; ">{title}</b>
-            // <p id="infoboxDescription" style="position: absolute; top: 50px; left: 10px; width: 220px;color:#2c3e50 ">{description}</p></div>`;
-            // var infobox = new window.Microsoft.Maps.Infobox(terminalLocation, {
-            //     htmlContent: infoboxTemplate.replace('{title}', title).replace('{description}', description),
-
-            //     showCloseButton: true,
-
-            //     visible: false,
-            // });
-
-
-            terminalPin.setOptions({ visible: true });
-
-            let title = terminal.properties.title;
-            let description = terminal.properties.address + "<br>" + terminal.properties.phone;
             terminalPin.setOptions({ visible: true });
             //this.setState({ pins, pin });
-            var infoboxTemplate = `<div id="infoboxText" style="background-color:White; border-style:solid; border-width:medium; border-color:#2c3e50; min-height:115px; width: 240px; border-radius:7px;line-height: 1.2;">
-            <b id="infoboxTitle" style="position: absolute; top: 10px; left: 10px; width: 220px; ">{title}</b>
-            <p id="infoboxDescription" style="position: absolute; top: 50px; left: 10px; width: 220px;color:#2c3e50 ">{description}</p></div>`;
             var infobox = new window.Microsoft.Maps.Infobox(terminalLocation, {
-                htmlContent: infoboxTemplate.replace('{title}', title).replace('{description}', description),
-
+                maxHeight: 350,
+                minHeight: 300,
+                maxWidth: 450,
+                title: terminal.properties.title,
+                description:
+                    "<strong>" +
+                    "Address: " +
+                    "</strong>" +
+                    "<br>" +
+                    terminal.properties.address +
+                    "<br>" +
+                    "<strong>" +
+                    "Phone Number: " +
+                    "</strong>" +
+                    "<br>" +
+                    terminal.properties.phone,
                 showCloseButton: true,
-                offset: new window.Microsoft.Maps.Point(-110, 15),
+                autoAlignment: true,
                 visible: false,
-            });
-            // var infobox = new window.Microsoft.Maps.Infobox(terminalLocation, {
-            //     maxHeight: 350,
-            //     minHeight: 300,
-            //     maxWidth: 450,
-            //     title: terminal.properties.title,
-            //     description:
-            //         "<strong>" +
-            //         "Address: " +
-            //         "</strong>" +
-            //         "<br>" +
-            //         terminal.properties.address +
-            //         "<br>" +
-            //         "<strong>" +
-            //         "Phone Number: " +
-            //         "</strong>" +
-            //         "<br>" +
-            //         terminal.properties.phone,
-            //     showCloseButton: true,
-            //     autoAlignment: true,
-            //     visible: false,
-            // });
+                // actions: [
+                //     {
+                //         label: "More",
+                //         eventHandler: function () {
 
+                //         }
+                //     },
+                //     {
+                //         label: "Close",
+                //         eventHandler: function () {
+                //             map.setView({ zoom: 9 });
+                //             infobox.setOptions({ visible: false });
+                //         }
+                //     }
+                // ]
+            });
             infobox.setMap(this.state.map);
 
             window.Microsoft.Maps.Events.addHandler(terminalPin, "click", function () {
                 map.setView({ center: terminalLocation, zoom: 10 });
                 infobox.setOptions({ visible: true });
             });
-
             window.Microsoft.Maps.Events.addHandler(map, "click", function () {
+                // this.state.map.setView({ center: this.map.center, zoom: 8 });
                 infobox.setOptions({ visible: false });
             });
-
             // this.state.terminalPins.push(terminalPin);
             this.state.map.entities.push(terminalPin);
         });

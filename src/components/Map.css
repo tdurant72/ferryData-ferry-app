@@ -9,3 +9,32 @@ div#mapTable {
 #mapTable > span {
     display: flex;
 }
+#map{
+    flex:2;
+  }
+.map{
+    height: 35vh;
+    width: 100vw;
+  }
+  
+  .MicrosoftMap .Infobox{
+    width:200px;
+  }
+  .MicrosoftMap .Infobox .infobox-stalk{
+    top:155.8px;
+  }
+  .MicrosoftMap .Infobox .infobox-body{
+    width:170px;
+  }
+  .MicrosoftMap .Infobox .infobox-actions{
+    height: 25px;
+  }
+  .infobox_pointer{
+    width:33px;
+    height:38px;
+    overflow:hidden;
+    position:relative;
+    z-index:1;
+    left:20px;
+    top:-1px;
+  }

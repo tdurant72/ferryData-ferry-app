@@ -3,12 +3,12 @@ const views = [
         "type": "Feature",
         "geometry": {
             "type": "Point",
-            "coordinates": [34.879891, -76.871810]
+            "coordinates": [35.264277, -76.833359]
         },
         "properties": {
             "id": 1,
             "title": "All",
-            "zoom": 8,
+            "zoom": 7,
         }
     },
     {
@@ -55,7 +55,7 @@ const views = [
         },
         "properties": {
             "id": 5,
-            "title": "Bayview to to Aurora to Swan Quarter",
+            "title": "Bayview to Aurora to Swan Quarter",
             "zoom": 10,
         }
     },
@@ -75,7 +75,7 @@ const views = [
         "type": "Feature",
         "geometry": {
             "type": "Point",
-            "coordinates": [33.957933, -77.982204]
+            "coordinates": [33.93, -78.00]
         },
         "properties": {
             "id": 7,
