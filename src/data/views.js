@@ -80,7 +80,7 @@ const views = [
         "properties": {
             "id": 7,
             "title": "Southport to Fort Fisher",
-            "zoom": 10,
+            "zoom": 11,
         }
     }
 ]

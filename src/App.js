@@ -6,7 +6,7 @@ import Ferries from "./components/Ferries";
 import FerryTable from "./components/FerryTable";
 import FerryList from "./components/FerryList";
 import Pin from "./components/Pin";
-//import Terminals from "./components/Terminals"
+import Loader from "./components/Loader"
 import Map from './components/Map'
 
 import axios from "axios";
@@ -31,6 +31,10 @@ class App extends Component {
     filteredFerries: [],
     map: null,
     search: "",
+    isLoading: true,
+
+    fetchingMessage: 'Data Loading',
+    failMessage: 'Data failed to load, try again later.'
   };
 
   getNCFerries = async () => {
@@ -46,7 +50,7 @@ class App extends Component {
             ncferries: response.data.features,
           },
         );
-        this.setState({ ncPinData: [] })
+        this.setState({ ncPinData: [], isLoading: false })
       })
 
       .catch(error => {
@@ -58,12 +62,12 @@ class App extends Component {
 
   componentDidMount = async () => {
     this.getNCFerries()
-    //setInterval(this.getNCFerries, 30000)
+    //setInterval(this.getNCFerries, 60000)
 
   };
   componentDidUpdate = async () => {
-    //setInterval(this.getNCFerries, 30000)//turn on before live
-    console.log("recall done")
+    //setInterval(this.getNCFerries, 60000)//turn on before live
+    //console.log("recall done")
   };
 
 
@@ -108,10 +112,20 @@ class App extends Component {
           {/* <div id="map" className="map"
 
           /> */}
-          <Map
-            ncferries={filteredFerries}
-            data={this.state}
-          />
+          {
+            this.state.isLoading === true ?
+              <Loader
+                isLoading={this.state.isLoading}
+                failMessage={this.state.failMessage}
+                fetchingMessage={this.state.fetchingMessage}
+              /> :
+              <Map
+                ncferries={filteredFerries}
+                data={this.state}
+              />
+          }
+
+
           <FerryTable ncferries={filteredFerries} />
         </div>
       </div>

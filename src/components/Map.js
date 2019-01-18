@@ -53,7 +53,7 @@ class Map extends Component {
         let lat = this.state.views[0].geometry.coordinates[0];
         let lng = this.state.views[0].geometry.coordinates[1];
         let center = lat + lng;
-        console.log(center)
+
         const map = new window.Microsoft.Maps.Map
             (document.getElementById("map"), {
                 //center: new window.Microsoft.Maps.Location(47.982295, -122.536867),
@@ -73,7 +73,7 @@ class Map extends Component {
 
         this.setState({ map, terminalPushpin, anchor, layer });
 
-        console.log(this.state.terminalPushpin)
+        //console.log(this.state.terminalPushpin)
         //this.renderTerminals()
         this.renderNCferryPins()
 
@@ -105,8 +105,7 @@ class Map extends Component {
         })
         let map = this.state.map;
 
-        const boatIcon =
-            '<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="20" height="20" viewBox="0 0 24 24"><path d="M6,6H18V9.96L12,8L6,9.96M3.94,19H4C5.6,19 7,18.12 8,17C9,18.12 10.4,19 12,19C13.6,19 15,18.12 16,17C17,18.12 18.4,19 20,19H20.05L21.95,12.31C22.03,12.06 22,11.78 21.89,11.54C21.76,11.3 21.55,11.12 21.29,11.04L20,10.62V6C20,4.89 19.1,4 18,4H15V1H9V4H6A2,2 0 0,0 4,6V10.62L2.71,11.04C2.45,11.12 2.24,11.3 2.11,11.54C2,11.78 1.97,12.06 2.05,12.31M20,21C18.61,21 17.22,20.53 16,19.67C13.56,21.38 10.44,21.38 8,19.67C6.78,20.53 5.39,21 4,21H2V23H4C5.37,23 6.74,22.65 8,22C10.5,23.3 13.5,23.3 16,22C17.26,22.65 18.62,23 20,23H22V21H20Z" /></svg>';
+
 
         this.props.data.ncferries.forEach(ncferry => {
 
@@ -114,19 +113,38 @@ class Map extends Component {
                 ncferry.properties.Latitude,
                 ncferry.properties.Longitude
             );
+            let bearing = parseInt(ncferry.properties.COG, 10);
+            // const boatIcon =
+            //     '<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="10" height="10" viewBox="0 0 24 24"><g id="ncferry" style=""><path d="M6,6H18V9.96L12,8L6,9.96M3.94,19H4C5.6,19 7,18.12 8,17C9,18.12 10.4,19 12,19C13.6,19 15,18.12 16,17C17,18.12 18.4,19 20,19H20.05L21.95,12.31C22.03,12.06 22,11.78 21.89,11.54C21.76,11.3 21.55,11.12 21.29,11.04L20,10.62V6C20,4.89 19.1,4 18,4H15V1H9V4H6A2,2 0 0,0 4,6V10.62L2.71,11.04C2.45,11.12 2.24,11.3 2.11,11.54C2,11.78 1.97,12.06 2.05,12.31M20,21C18.61,21 17.22,20.53 16,19.67C13.56,21.38 10.44,21.38 8,19.67C6.78,20.53 5.39,21 4,21H2V23H4C5.37,23 6.74,22.65 8,22C10.5,23.3 13.5,23.3 16,22C17.26,22.65 18.62,23 20,23H22V21H20Z" transform="rotate(' + bearing + ')" /></g></svg>';
+            const boatIcon =
+                '<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg id="ncferry" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"  width="19" height="19" viewBox="0 0 12 22.38" transform="rotate(' + bearing + ')"><defs><style>.cls-1{fill:#eaeaea;}.cls-2{fill:#002445;}.cls-3{fill:#004544;stroke:#002445;stroke-miterlimit:10;}</style></defs><title>ferry</title><path class="cls-1" d="M12.21,18.76,12,18.9l-.21-.14L7,21V6.69a2.69,2.69,0,0,1,1-2l4-3.48,4,3.48a2.69,2.69,0,0,1,1,2V21Z" transform="translate(-6 -0.05)"/><path class="cls-2" d="M12,2.51l3.39,2.92A1.68,1.68,0,0,1,16,6.69V19.4l-2.85-1.31-1-.48-.11.08-.11-.08-1,.48L8,19.4V6.69a1.68,1.68,0,0,1,.61-1.26L12,2.51M12,.05a.53.53,0,0,0-.36.13L7.31,3.92A3.63,3.63,0,0,0,6,6.69V22.05a.47.47,0,0,0,.21.38l5.48-2.53a.53.53,0,0,0,.62,0l5.48,2.53a.47.47,0,0,0,.21-.38V6.69a3.63,3.63,0,0,0-1.31-2.77L12.36.18A.53.53,0,0,0,12,.05Z" transform="translate(-6 -0.05)"/><path class="cls-3" d="M12,23.89" transform="translate(-6 -0.05)"/></svg>';
+
             //let pin = [];
             let ncPin = new window.Microsoft.Maps.Pushpin(pinNCLocation, {
                 title: ncferry.properties['Vessel Name'],
                 id: ncferry.properties['Vessel Name'],
                 icon: boatIcon,
-                //visible: true,
-                anchor: new window.Microsoft.Maps.Point(0, 0)
+                typeName: 'ncferry-pin',
+                anchor: new window.Microsoft.Maps.Point(8, 8)
             });
+
+
+            let boat = document.getElementsByClassName("ncferry-pin")
+            // ncPin.style.transform = "rotate('+bearing+')"
+
+            //console.log(boatIcon);
             ncPin.metadata = {
-                id: ncferry.properties.VesseName,
+                id: ncferry.properties['Vessel Name'],
                 title: ncferry.properties['Vessel Name']
             };
-            ncPin.setOptions({ visible: true });
+            ncPin.setOptions({
+                visible: true,
+                title: ncferry.properties['Vessel Name'],
+                id: ncferry.properties['Vessel Name'],
+                typeName: 'ncferry',
+            });
+
+
             //this.setState({ pins, pin });
             let title = ncferry.properties['Vessel Name'];
             let description = "<strong>" +
@@ -205,7 +223,9 @@ class Map extends Component {
 
         this.renderTerminals();
     }
+    createFerryIcon(heading) {
 
+    }
     renderTerminals(props) {
         let map = this.state.map;
         //let terminals = this.state.terminals;
@@ -213,7 +233,7 @@ class Map extends Component {
         let terminalPins = this.state.terminalPins;
 
         var terminalIcon =
-            '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 23"><defs><style>.cls-1,.cls-2,.cls-3,.cls-4{fill:none;stroke-miterlimit:10;}.cls-1,.cls-4{stroke:#000;}.cls-2,.cls-3{stroke:#0071bc;}.cls-2,.cls-4{stroke-width:2px;}.cls-3,.cls-4{stroke-linecap:round;}.cls-3{stroke-width:3px;}</style></defs><title>anchorai</title><path class="cls-1" d="M11.75,14.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,14.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,18.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,21.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,18.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,21.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,21.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,18.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,18.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,21.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,21.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,18.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,18.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,21.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,21.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,19.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,19.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M23.5,21.5" transform="translate(-3.75 -0.5)"/><circle class="cls-2" cx="8" cy="3.5" r="2.5"/><line class="cls-3" x1="8" y1="21" x2="8" y2="7"/><path class="cls-4" d="M11.75,18" transform="translate(-3.75 -0.5)"/><path class="cls-4" d="M11.75,21" transform="translate(-3.75 -0.5)"/><path class="cls-4" d="M11.75,18" transform="translate(-3.75 -0.5)"/><path class="cls-3" d="M18.25,16c0,2.21-3.14,6-6.73,6s-6.27-3.79-6.27-6" transform="translate(-3.75 -0.5)"/><line class="cls-2" x1="4.5" y1="9" x2="11.5" y2="9"/></svg>';
+            '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 23"><defs><style>.cls-1,.cls-2,.cls-3,.cls-4{fill:none;stroke-miterlimit:10;}.cls-1,.cls-4{stroke:#000;}.cls-2,.cls-3{stroke:#0071bc;}.cls-2,.cls-4{stroke-width:2px;}.cls-3,.cls-4{stroke-linecap:round;}.cls-3{stroke-width:3px;}</style></defs><title>anchorai</title><path class="cls-1" d="M11.75,14.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,14.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,18.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,21.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,18.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,21.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,21.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,18.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,18.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,21.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,21.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,18.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,18.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,21.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,21.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,19.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,19.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M23.5,21.5" transform="translate(-3.75 -0.5)"/><circle class="cls-2" cx="8" cy="3.5" r="2.5"/><line class="cls-3" x1="8" y1="21" x2="8" y2="7"/><path class="cls-4" d="M11.75,18" transform="translate(-3.75 -0.5)"/><path class="cls-4" d="M11.75,21" transform="translate(-3.75 -0.5)"/><path class="cls-4" d="M11.75,18" transform="translate(-3.75 -0.5)"/><path class="cls-3" d="M18.25,16c0,2.21-3.14,6-6.73,6s-6.27-3.79-6.27-6" transform="translate(-3.75 -0.5)"/><line class="cls-2" x1="4.5" y1="9" x2="11.5" y2="9"/></svg>';
         //console.log(this.state.terminals)
         this.state.terminals.forEach(terminal => {
             let terminalLocation = new window.Microsoft.Maps.Location(
@@ -227,7 +247,8 @@ class Map extends Component {
                 id: terminal.properties.title,
                 icon: terminalIcon,
                 visible: true,
-                anchor: new window.Microsoft.Maps.Point(0, 0)
+                typeName: 'ncterminal',
+                anchor: new window.Microsoft.Maps.Point(9, 9)
             });
             terminalPin.metadata = {
                 id: terminal.properties.title,
@@ -318,18 +339,18 @@ class Map extends Component {
                 onClickView={this.onClickView.bind(this, view)}
             />
         ))
-        const terminals = this.state.terminals.map((terminal, index) => (
-            <Terminals
-                key={index}
-                index={index}
+        // const terminals = this.state.terminals.map((terminal, index) => (
+        //     <Terminals
+        //         key={index}
+        //         index={index}
 
-                terminalLocation={terminal.geometry.coordinates}
-                terminalPushpin={this.state.terminalPushpin}
-                anchor={this.state.anchor}
-                infobox={this.state.infobox}
-                {...terminal}
-            />
-        ))
+        //         terminalLocation={terminal.geometry.coordinates}
+        //         terminalPushpin={this.state.terminalPushpin}
+        //         anchor={this.state.anchor}
+        //         infobox={this.state.infobox}
+        //         {...terminal}
+        //     />
+        // ))
         return (
             <div id="mapHolder">
                 <div id="mapTable">
@@ -337,7 +358,7 @@ class Map extends Component {
                     {viewLinks}
                 </div>
                 <div id="map" className="map" map={this.state.map}>
-                    {terminals}
+                    {/* {terminals} */}
                 </div>
             </div>
 

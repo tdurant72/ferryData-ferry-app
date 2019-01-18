@@ -47,7 +47,7 @@ class Terminals extends React.Component {
         setTimeout(() => {
             let terminalPushpin = this.props.terminalPushpin
             this.setState({ terminalPushpin: terminalPushpin });
-            console.log(this.props.terminalPushpin)
+            //console.log(this.props.terminalPushpin)
             this.renderTerminal()
         }, 2000)
     }
@@ -69,7 +69,7 @@ class Terminals extends React.Component {
         let teriminalPushpin = this.props.terminalPushpin;
         let lat = this.props.terminalLocation[0];
         let lng = this.props.terminalLocation[1];
-
+        //   console.log(this.props.properties.title)
         //console.log(teriminalPushpin)
         // this.props.teriminalPushpin(lat, lng, {
         //     title: this.props.properties.title,
@@ -83,6 +83,7 @@ class Terminals extends React.Component {
             id: this.props.properties.title,
             icon: terminalIcon,
             visible: true,
+            typeName: 'ncterminal',
             anchor: this.props.anchor
         })
         teriminalPushpin.metadata = {
@@ -156,7 +157,7 @@ class Terminals extends React.Component {
 
         // }
         //console.log(this.props)
-        this.setInitialData()
+        //this.setInitialData()
         //this.renderMaker();
         //console.log(this.props)
     }
