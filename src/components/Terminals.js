@@ -27,6 +27,7 @@ class Terminals extends React.Component {
             console.log(this.props.terminalPushpin)
         }, 2000)
 
+
         //console.log(this.props)
 
         // let terminalPin = this.props.map.Maps.Pushpin(this.props.terminalLocation, {

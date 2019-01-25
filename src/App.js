@@ -62,7 +62,7 @@ class App extends Component {
 
   componentDidMount = async () => {
     this.getNCFerries()
-    //setInterval(this.getNCFerries, 60000)
+    setInterval(this.getNCFerries, 60000)
 
   };
   componentDidUpdate = async () => {
