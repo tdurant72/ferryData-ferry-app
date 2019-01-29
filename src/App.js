@@ -26,6 +26,7 @@ class App extends Component {
     ncPins: [],
     // pin: this.filteredFerries,
     ncPinData: [],
+    terminals: [],
     filterPin: this.props.pins,
     ferryData: null,
     filteredFerries: [],
@@ -45,12 +46,13 @@ class App extends Component {
       )
       .then(response => {
         let ncFerries = response.data;
-        this.setState(
-          {
-            ncferries: response.data.features,
-          },
-        );
-        this.setState({ ncPinData: [], isLoading: false })
+        // this.setState(
+        //   {
+        //     ncferries: response.data.features,
+        //   },
+        // );
+        this.setState(() => ({ ncferries: response.data.features, isLoading: false, ncPinData: [], terminals: ports, terminalPins: ports, }))
+        // this.setState({ ncPinData: [], isLoading: false })
       })
 
       .catch(error => {
