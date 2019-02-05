@@ -67,7 +67,10 @@ class App extends Component {
     setInterval(this.getNCFerries, 60000)
 
   };
-  componentDidUpdate = async () => {
+  componentDidUpdate = async (prevProps, prevState) => {
+    if (prevState.ncFerries !== null) {
+
+    }
     //setInterval(this.getNCFerries, 60000)//turn on before live
     //console.log("recall done")
   };
@@ -124,6 +127,7 @@ class App extends Component {
               <Map
                 ncferries={filteredFerries}
                 data={this.state}
+
               />
           }
 

@@ -5,7 +5,10 @@ import axios from "axios";
 import views from '../data/views'
 import ViewLinks from './ViewLinks'
 import Terminals from "./Terminals";
+//import Ferries from './Ferries'
 import Pin from './Pin'
+import Ferry from "./Ferry";
+import Boat from './Boat';
 const API_KEY = "80e61cf4-541b-4651-8228-6376d80567f7";
 const Microsoft = window.Microsoft;
 
@@ -26,31 +29,45 @@ class Map extends Component {
             infobox: null,
             terminalPinData: [],
             ncPinData: [],
-            ferryData: null,
+            ferryLayer: null,
+            terminalLayer: null,
             filteredFerries: [],
             views: [],
             newView: [],
-            layer: null
+            layer: null,
         }
-        this.renderPins = this.renderPins.bind(this)
+        this.boatPins = [];
+        this.terminalPins = [];
+        this.renderTerminalPin = this.renderTerminalPin.bind(this)
+        //this.renderFerryPin = this.renderFerryPin.bind(this)
+        this.renderNCferryPins = this.renderNCferryPins.bind(this)
+        this.onChangeMarker = this.onChangeMarker.bind(this)
     }
 
     /* init*/
     componentDidMount = async () => {
-        this.setState(() => ({ views: views }))
+        this.setState(() => ({ views: views, ferries: this.props.data.ncferries, terminals: this.props.data.terminals }))
+
         this.renderMap()
         // this.getNCFerries()
-        //setInterval(this.renderNCferryPins, 62000)
+
         //this.setState({ terminals: ports, terminalPins: ports, views: views })
 
-        let pins = [];
+
         // this.getAllTerminals().then(this.setTerminals)
 
-        //console.log(this.props.data.terminals)
+        //console.log("map rendered", this.props.data.ncferries)
 
     };
-    componentDidUpdate(prevProps) {
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.data.ncferries !== this.state.ferries) {
 
+            this.setState(() => ({ ferries: this.props.data.ncferries }))
+            // this.renderNCferryPins();
+
+            console.log(this.state.map.layers)
+
+        }
     }
 
     /* render data */
@@ -67,35 +84,43 @@ class Map extends Component {
 
         const map = new window.Microsoft.Maps.Map
             (document.getElementById("map"), {
-                //center: new window.Microsoft.Maps.Location(47.982295, -122.536867),
                 center: new window.Microsoft.Maps.Location(lat, lng),
                 mapTypeId: window.Microsoft.Maps.MapTypeId.road,
                 zoom: this.state.views[0].properties.zoom
             });
+        if (this.state.map !== null) {
 
-        const infobox = new window.Microsoft.Maps.Infobox
+        }
+
+        let infobox = new window.Microsoft.Maps.Infobox
         let terminalLocation = new window.Microsoft.Maps.Location(lat, lng);
         let terminalPushpin = new window.Microsoft.Maps.Pushpin(lat, lng)
         var layer = new window.Microsoft.Maps.Layer();
-        // console.log(terminalPushpin)
-        // const terminalLocation = new window.Microsoft.Maps.Location(this.state.terminalLocation)
-        let anchor = new window.Microsoft.Maps.Point(0, 0)
-        // this.setState({ map, infobox, terminalPushpin, terminalLocation, anchor });
+        let anchor = new window.Microsoft.Maps.Point(0, 0);
+        let ferryLayer = new window.Microsoft.Maps.Layer();
+        let terminalLayer = new window.Microsoft.Maps.Layer();
+        this.setState(() => ({ map, terminalPushpin, terminalLocation, anchor, layer, ferryLayer, terminalLayer }));
+        this.state.map.layers.insert(this.state.ferryLayer);
+        this.state.map.layers.insert(this.state.terminalLayer);
 
-        //this.setState({ map, terminalPushpin, anchor, layer });
-        this.setState(() => ({ map, terminalPushpin, terminalLocation, anchor, layer }))
 
-        //console.log(this.state.terminalPushpin)
-        //this.renderTerminals()
-        this.renderNCferryPins()
-        //setInterval(this.renderNCferryPins(), 62000)
-        map.layers.insert(layer);
-        layer.add(terminalPushpin);
-        // this.updateTerminalData()
     };
+    loadRecuringData = async () => {
+        let lat = this.state.views[0].geometry.coordinates[0];
+        let lng = this.state.views[0].geometry.coordinates[1];
+        let infobox = new window.Microsoft.Maps.Infobox
+        let terminalLocation = new window.Microsoft.Maps.Location(lat, lng);
+        let terminalPushpin = new window.Microsoft.Maps.Pushpin(lat, lng)
+        var layer = new window.Microsoft.Maps.Layer();
+        let anchor = new window.Microsoft.Maps.Point(0, 0);
+        let ferryLayer = new window.Microsoft.Maps.Layer();
+        let terminalLayer = new window.Microsoft.Maps.Layer();
+        this.setState(() => ({ terminalPushpin, terminalLocation, anchor, layer, ferryLayer, terminalLayer }));
+        this.state.map.layers.insert(this.state.ferryLayer);
+        this.state.map.layers.insert(this.state.terminalLayer);
+    }
 
-
-
+    //Change map view
     onClickView = (props) => {
         let updatedView = props;
 
@@ -111,14 +136,8 @@ class Map extends Component {
 
 
     renderNCferryPins(props) {
-        // this.setState({
-        //     ,
-        //     filteredFerries: this.props.data.filteredFerries,
-        // })
         this.setState(() => ({ ncferries: this.props.data.ncferries }))
         let map = this.state.map;
-
-
 
         this.props.data.ncferries.forEach(ncferry => {
 
@@ -187,28 +206,6 @@ class Map extends Component {
                 offset: new window.Microsoft.Maps.Point(-110, 18),
                 visible: false,
             });
-            // var infobox = new window.Microsoft.Maps.Infobox(pinNCLocation, {
-            //     maxHeight: 350,
-            //     minHeight: 300,
-            //     maxWidth: 450,
-            //     title: ncferry.properties['Vessel Name'],
-            //     description:
-            //         "<strong>" +
-            //         "Current Latitude: " +
-            //         "</strong>" +
-            //         "<br>" +
-            //         ncferry.properties.Latitude +
-            //         "<br>" +
-            //         "<strong>" +
-            //         "Current Longitude: " +
-            //         "</strong>" +
-            //         "<br>" +
-            //         ncferry.properties.Longitude
-            //     ,
-            //     showCloseButton: true,
-            //     autoAlignment: true,
-            //     visible: false,
-            // });
             infobox.setMap(this.state.map);
 
             window.Microsoft.Maps.Events.addHandler(ncPin, "click", function () {
@@ -230,160 +227,176 @@ class Map extends Component {
             //this.state.ncPinData.shift();
             //this.removeItem()
 
-            this.state.map.entities.push(ncPin);
+            let ferryLayer = new window.Microsoft.Maps.Layer();
+            this.state.ferryLayer.add(this.state.ncPinData)
+            // this.state.map.entities.push(ncPin);
 
+            this.state.map.layers.insert(ferryLayer);
+            //console.log(this.state.map.layers)
 
         });
 
         //this.renderTerminals();
     }
 
-    renderTerminals(props) {
-        let map = this.state.map;
-        //let terminals = this.state.terminals;
+    //render terminal and ferry pins
+    renderFerryPin(COG, Latitude, Longitude, VesselName, SOG, boatIcon) {
 
-        let terminalPins = this.state.terminalPins;
+        //console.log(Longitude)
 
-        var terminalIcon =
-            '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 23"><defs><style>.cls-1,.cls-2,.cls-3,.cls-4{fill:none;stroke-miterlimit:10;}.cls-1,.cls-4{stroke:#000;}.cls-2,.cls-3{stroke:#0071bc;}.cls-2,.cls-4{stroke-width:2px;}.cls-3,.cls-4{stroke-linecap:round;}.cls-3{stroke-width:3px;}</style></defs><title>anchorai</title><path class="cls-1" d="M11.75,14.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,14.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,18.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,21.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,18.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,21.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,21.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,18.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,18.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,21.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,21.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,18.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,18.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,21.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,21.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,19.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,19.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M23.5,21.5" transform="translate(-3.75 -0.5)"/><circle class="cls-2" cx="8" cy="3.5" r="2.5"/><line class="cls-3" x1="8" y1="21" x2="8" y2="7"/><path class="cls-4" d="M11.75,18" transform="translate(-3.75 -0.5)"/><path class="cls-4" d="M11.75,21" transform="translate(-3.75 -0.5)"/><path class="cls-4" d="M11.75,18" transform="translate(-3.75 -0.5)"/><path class="cls-3" d="M18.25,16c0,2.21-3.14,6-6.73,6s-6.27-3.79-6.27-6" transform="translate(-3.75 -0.5)"/><line class="cls-2" x1="4.5" y1="9" x2="11.5" y2="9"/></svg>';
-        //console.log(this.state.terminals)
-        this.props.data.terminals.forEach(terminal => {
-            let terminalLocation = new window.Microsoft.Maps.Location(
-                terminal.geometry.coordinates[1],
-                terminal.geometry.coordinates[0]
-            );
-
-            //let pin = [];
-            let terminalPin = new window.Microsoft.Maps.Pushpin(terminalLocation, {
-                title: terminal.properties.title,
-                id: terminal.properties.title,
-                icon: terminalIcon,
-                visible: true,
-                typeName: 'ncterminal',
-                anchor: new window.Microsoft.Maps.Point(9, 9)
-            });
-            terminalPin.metadata = {
-                id: terminal.properties.title,
-                title: terminal.properties.title
-            };
-
-
-            terminalPin.setOptions({ visible: true });
-
-            let title = terminal.properties.title;
-            let description = terminal.properties.address + "<br>" + terminal.properties.phone;
-            terminalPin.setOptions({ visible: true });
-            //this.setState({ pins, pin });
-            var infoboxTemplate = `<div id="infoboxText" style="background-color:White; border-style:solid; border-width:medium; border-color:#2c3e50; min-height:115px; width: 240px; border-radius:7px;line-height: 1.2;">
-            <b id="infoboxTitle" style="position: absolute; top: 10px; left: 10px; width: 220px; ">{title}</b>
-            <p id="infoboxDescription" style="position: absolute; top: 50px; left: 10px; width: 220px;color:#2c3e50 ">{description}</p></div>`;
-            var infobox = new window.Microsoft.Maps.Infobox(terminalLocation, {
-                htmlContent: infoboxTemplate.replace('{title}', title).replace('{description}', description),
-
-                showCloseButton: true,
-                offset: new window.Microsoft.Maps.Point(-110, 15),
-                visible: false,
-            });
-            // var infobox = new window.Microsoft.Maps.Infobox(terminalLocation, {
-            //     maxHeight: 350,
-            //     minHeight: 300,
-            //     maxWidth: 450,
-            //     title: terminal.properties.title,
-            //     description:
-            //         "<strong>" +
-            //         "Address: " +
-            //         "</strong>" +
-            //         "<br>" +
-            //         terminal.properties.address +
-            //         "<br>" +
-            //         "<strong>" +
-            //         "Phone Number: " +
-            //         "</strong>" +
-            //         "<br>" +
-            //         terminal.properties.phone,
-            //     showCloseButton: true,
-            //     autoAlignment: true,
-            //     visible: false,
-            // });
-
-            infobox.setMap(this.state.map);
-
-            window.Microsoft.Maps.Events.addHandler(terminalPin, "click", function () {
-                map.setView({ center: terminalLocation, zoom: 10 });
-                infobox.setOptions({ visible: true });
-            });
-
-            window.Microsoft.Maps.Events.addHandler(map, "click", function () {
-                infobox.setOptions({ visible: false });
-            });
-
-            // this.state.terminalPins.push(terminalPin);
-            this.state.map.entities.push(terminalPin);
+        let pinFLocation = new window.Microsoft.Maps.Location(Latitude, Longitude);
+        let fPin = new window.Microsoft.Maps.Pushpin(pinFLocation, {
+            title: VesselName,
+            id: VesselName,
+            icon: boatIcon,
+            visible: true,
+            typeName: 'ncferry',
+            anchor: new window.Microsoft.Maps.Point(0, 0)
         });
-        this.setState({ terminalPins });
-        //console.log(this.state.map.entities);
+        fPin.metadata = {
+            id: VesselName,
+            title: VesselName
+        };
+        this.setState({ ferries: [...this.state.ferries, fPin] })
+
+
+        // let ferryLayer = new window.Microsoft.Maps.Layer();
+        this.state.ferryLayer.add(this.state.ferries)
+        //this.state.map.layers.ferryLayer.clear()
+
+        //console.log(fPin.metadata.id)
+        //this.state.map.entities.push(fPin);
+        // this.setState(() => ({
+        //     map: this.statemap.entities.concat([fPin])
+        // }))
+
+        // this.state.map.layers.insert(ferryLayer);
+        //console.log(ferryLayer)
+        // console.log(this.state.map.layers)
+
     }
 
-    handleTerminalPinUpdate() {
-        let terminalPinData = this.state.terminalPinData;
-        // this.state.map.entities.push(terminalPinData);
-        // this.state.map.entities.add(terminalPinData);
-        this.setState((prevState) => ({ terminalPushpin: prevState.terminalPushpin.concat([terminal]) }))
+    renderTerminalPin(terminalLocation, terminalName, terminalIcon, infoboxTemplate, terminalDescription) {
+        //console.log(terminalLocation, terminalName, )
+
+        let pinTLocation = new window.Microsoft.Maps.Location(terminalLocation[1], terminalLocation[0]);
+        let tPin = new window.Microsoft.Maps.Pushpin(pinTLocation, {
+            title: terminalName,
+            id: terminalName,
+            icon: terminalIcon,
+            visible: true,
+            typeName: 'ncterminal',
+            anchor: new window.Microsoft.Maps.Point(9, 9)
+        });
+        tPin.metadata = {
+            id: terminalName,
+            title: terminalName
+        };
+        let infobox = new window.Microsoft.Maps.Infobox(pinTLocation, {
+            htmlContent: infoboxTemplate.replace('{title}', terminalName).replace('{description}', terminalDescription),
+
+            showCloseButton: true,
+            offset: new window.Microsoft.Maps.Point(-110, 25),
+            visible: false,
+        });
+        infobox.setMap(this.state.map);
+        window.Microsoft.Maps.Events.addHandler(tPin, "click", function () {
+            //this.state.map.setView({ center: pinTLocation, zoom: 10 });
+            infobox.setOptions({ visible: true });
+            console.log('terminal clicked', infobox)
+        });
+        window.Microsoft.Maps.Events.addHandler(this.state.map, "click", function () {
+            infobox.setOptions({ visible: false });
+        });
+        let terminalLayer = new window.Microsoft.Maps.Layer();
+
+        this.terminalPins.push(tPin)
+
+        // this.setState(() => ({ terminalLayer: this.terminalPins }))
+        // this.state.map.layers.insert(terminalLayer)
+
+        //terminalLayer.add(tPin)
+        //this.state.map.entities.push(fPin);
+        //this.state.map.layers.clear(terminalLayer)
+        //this.state.map.layers.insert(terminalLayer);
+        this.state.map.entities.push(tPin);
     }
-    renderPins(pin) {
-        if (this.state.map !== null) {
-            this.state.map.entities.push(pin)
-            // console.log(this.state.map.entities)
-        } else {
-            setTimeout(() => { this.renderPins() }, 1000)
+
+    onChangeMarker(COG, Latitude, Longitude, VesselName, SOG, boatIcon, boatPin) {
+        let ferryLayer = new window.Microsoft.Maps.Layer();
+        // this.setState({ ferries: [...this.state.ferries, boatPin] })
+        // this.state.ferryLayer.add(this.state.ferries)
+        // 
+        //console.log(this.state.map.layers)
+        let currentPrimitives = ferryLayer.getPrimitives();
+
+        for (var i = 0; i < currentPrimitives.length; i++) {
+            var entity = currentPrimitives[i];
+            if (entity instanceof window.Microsoft.Maps.Pushpin) {
+                ferryLayer.clear(entity);
+            }
         }
+        console.log(currentPrimitives)
+        //
+        this.state.map.layers.clear(currentPrimitives)
+        this.boatPins.push(boatPin);
+        ferryLayer.add(this.boatPins)
+
+        this.state.map.layers.insert(ferryLayer)
+        // this.setState(() => ({ ferryLayer: this.boatPins }))
+        // this.state.map.layers.insert(ferryLayer);
+        //this.state.map.entities.push(boatPin);
 
     }
+
     render() {
-        const viewLinks = this.state.views.map((view, index) => (
-            <ViewLinks
-                key={view.properties.id}
-                index={view.properties.id}
-
-                {...view}
-                onClickView={this.onClickView.bind(this, view)}
-            />
-        ))
-
-
         return (
             <div id="mapHolder">
                 <div id="mapTable">
                     <h4>Ferry Watch Views</h4>
-                    {viewLinks}
+                    {this.state.views.map((view, index) => {
+                        return (
+                            <ViewLinks
+                                key={view.properties.id}
+                                index={view.properties.id}
+
+                                {...view}
+                                onClickView={this.onClickView.bind(this, view)}
+                            />
+                        )
+                    })}
                 </div>
                 <div id="map" className="map" map={this.state.map}>
-                    {
-                        this.props.data.terminals.length > 0 ?
-                            this.props.data.terminals.map((terminal, index) => (
-                                <Pin
-                                    key={index}
-                                    map={this.state.map}
-                                    // terminals={this.props.data.terminals}
-                                    terminalPushpin={this.state.terminalPushpin}
-                                    handleTerminalPinUpdate={this.handleTerminalPinUpdate}
-                                    terminalLocation={this.state.terminalLocation}
-                                    renderPins={this.renderPins}
-                                />
+                    {this.state.terminals.map((terminal, index) => {
+                        return (
+                            <Pin
+                                key={index}
+                                map={this.state.map}
+                                terminalName={terminal.properties.title}
+                                terminalAddress={terminal.properties.address}
+                                terminalPhone={terminal.properties.phone}
+                                handleTerminalPinUpdate={this.handleTerminalPinUpdate}
+                                terminalLocation={terminal.geometry.coordinates}
+                                renderPins={this.renderPins}
+                                triggerPinUpdate={this.renderTerminalPin}
+                            />
+                        )
+                    })}
 
-                            ))
-                            : null
-                        // this.props.data.terminals.length > 0 ?
-                        //     <Terminals
-                        //         terminals={this.props.data.terminals}
-                        //         terminalPushpin={this.state.terminalPushpin}
-                        //         handleTerminalPinUpdate={this.handleTerminalPinUpdate}
-                        //         terminalLocation={this.state.terminalLocation}
-                        //     /> : null
-                    }
-
-
-                    {this.renderPins()}
+                    {this.state.ferries.map((ferry) => {
+                        return (
+                            <Boat
+                                key={ferry.properties['Vessel Name']}
+                                map={this.state.map}
+                                COG={ferry.properties.COG}
+                                Latitude={ferry.properties.Latitude}
+                                Longitude={ferry.properties.Longitude}
+                                VesselName={ferry.properties['Vessel Name']}
+                                SOG={ferry.properties.SOG}
+                                onChangeMarker={this.onChangeMarker}
+                            />
+                        )
+                    })}
                 </div>
             </div>
 
