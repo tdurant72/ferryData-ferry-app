@@ -1,7 +1,9 @@
 import React from "react";
 
 function Loader(props) {
+    console.log(props)
     return (
+
         <div>
             <h2>{props.fetchingMessage}</h2>
             {props.isLoading ? (

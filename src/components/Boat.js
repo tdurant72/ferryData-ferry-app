@@ -22,17 +22,15 @@ class Boat extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         // const newProps = this.props;
-        if (this.props.Longitude !== prevProps.Longitude || this.props.Latitude !== prevProps.Latitude) {
+        if (this.props.timeStamp !== prevProps.timeStamp) {
 
-            // console.log(this.props.Latitude, this.props.Longitude)
+
             this.renderBoatPin();
             //this.loadMapScenario();
         }
 
     }
     renderBoatPin(props) {
-        // let { map, terminalName, terminalCoordinates, terminalPushpin, terminalLocation, renderPins } = this.props;
-        // console.log("renderBoatPin called")
         let COG = this.props.COG;
         let bearing = parseInt(COG, 10);
         const boatIcon =
@@ -44,22 +42,25 @@ class Boat extends Component {
         let Longitude = parseFloat(this.props.Longitude);
         let VesselName = this.props.VesselName;
         let SOG = this.props.SOG;
-
+        let boatId = this.props.boatId;
+        let summary = this.props.summary;
         let boatLocation = new window.Microsoft.Maps.Location(Latitude, Longitude);
         this.boatPin = new window.Microsoft.Maps.Pushpin(boatLocation, {
             title: VesselName,
-            id: VesselName,
+            id: boatId,
             icon: boatIcon,
             visible: true,
             typeName: 'ncferry',
             anchor: new window.Microsoft.Maps.Point(0, 0)
         });
         this.boatPin.metadata = {
-            id: VesselName,
-            title: VesselName
+            id: boatId,
+            title: VesselName,
+            description: summary,
+            type: 'boat'
         };
         const boatPin = this.boatPin;
-        this.props.onChangeMarker(COG, Latitude, Longitude, VesselName, SOG, boatIcon, boatPin)
+        this.props.onChangeMarker(boatId, COG, Latitude, Longitude, VesselName, SOG, boatIcon, boatPin, boatLocation, summary)
 
     }
     render() {

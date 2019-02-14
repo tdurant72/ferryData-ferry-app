@@ -20,7 +20,7 @@ button:focus {
   height: 90px;
   padding: 30px;
   color: white;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 .App-title {
@@ -29,7 +29,7 @@ button:focus {
 
 div#content-wrapper {
   /* display: flex; */
-  padding-top: 20px;
+
   max-width: 1100px;
   margin: 0 auto;
 }

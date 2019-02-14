@@ -1,21 +1,10 @@
 import React, { Component } from "react";
-
 import "./App.css";
-//import Form from "./components/Form";
-import Ferries from "./components/Ferries";
 import FerryTable from "./components/FerryTable";
-import FerryList from "./components/FerryList";
-import Pin from "./components/Pin";
 import Loader from "./components/Loader"
 import Map from './components/Map'
-
 import axios from "axios";
 import ports from './data/ports'
-
-const API_KEY = "80e61cf4-541b-4651-8228-6376d80567f7";
-const proxy = "https://cors-anywhere.herokuapp.com/";
-const Microsoft = window.Microsoft;
-
 
 
 class App extends Component {
@@ -33,7 +22,7 @@ class App extends Component {
     map: null,
     search: "",
     isLoading: true,
-
+    timeStamp: null,
     fetchingMessage: 'Data Loading',
     failMessage: 'Data failed to load, try again later.'
   };
@@ -45,14 +34,12 @@ class App extends Component {
         "https://gisd14.dot.nc.net/GeoRss/FerryGeoJson.ashx"
       )
       .then(response => {
-        let ncFerries = response.data;
-        // this.setState(
-        //   {
-        //     ncferries: response.data.features,
-        //   },
-        // );
-        this.setState(() => ({ ncferries: response.data.features, isLoading: false, ncPinData: [], terminals: ports, terminalPins: ports, }))
-        // this.setState({ ncPinData: [], isLoading: false })
+
+        let timeStamp = Date.now();
+        this.setState(() => ({ ncferries: response.data.features, ncPinData: [], terminals: ports, terminalPins: ports, timeStamp, filteredFerries: response.data.features }))
+        console.log(response.data)
+      }).then((resonse) => {
+        this.setState(() => ({ isLoading: false, }))
       })
 
       .catch(error => {
@@ -67,72 +54,32 @@ class App extends Component {
     setInterval(this.getNCFerries, 60000)
 
   };
-  componentDidUpdate = async (prevProps, prevState) => {
-    if (prevState.ncFerries !== null) {
-
-    }
-    //setInterval(this.getNCFerries, 60000)//turn on before live
-    //console.log("recall done")
-  };
-
-
-  filterFerries(search) {
-    let filter = search
-      ? this.state.ncferries.filter(f =>
-        f.properties['Vessel Name'].toLowerCase().includes(search)
-      )
-      : this.state.ncferries;
-    this.state.ncPinData.forEach(p => {
-      p.metadata.title.toLowerCase().includes(search)
-        ? p.setOptions({ visible: true })
-        : p.setOptions({ visible: false });
-    });
-
-    this.setState({ filtered: this.ncferries, search: search });
-  }
 
 
   render() {
-    let filteredFerries = this.state.ncferries.filter(ncferry => {
-      return ncferry.properties['Vessel Name'].toLowerCase().indexOf(this.state.search) !== -1;
-    });
+
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Ferry Tracker</h1>
         </header>
-        {/* <input
-          type="text"
-          placeholder="Find a ferry"
-          value={this.state.search}
-          onChange={e => {
-            this.filterFerries(e.target.value);
-          }}
-        /> */}
 
         <div id="content-wrapper">
-
-          {/* <FerryList ncferries={filteredFerries} /> */}
-          {/* <Terminals terminals={this.state.terminals}/> */}
-          {/* <div id="map" className="map"
-
-          /> */}
           {
             this.state.isLoading === true ?
               <Loader
                 isLoading={this.state.isLoading}
                 failMessage={this.state.failMessage}
                 fetchingMessage={this.state.fetchingMessage}
+                arrayCheck={this.state.ncferries}
               /> :
               <Map
-                ncferries={filteredFerries}
+                //ncferries={filteredFerries}
                 data={this.state}
-
               />
           }
 
-
-          <FerryTable ncferries={filteredFerries} />
+          <FerryTable ncferries={this.state.ncferries} />
         </div>
       </div>
     );
