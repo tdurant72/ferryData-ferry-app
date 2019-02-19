@@ -23,18 +23,18 @@ const views = [
             "zoom": 10,
         }
     },
-    // {
-    //     "type": "Feature",
-    //     "geometry": {
-    //         "type": "Point",
-    //         "coordinates": [35.875036, -75.771055]
-    //     },
-    //     "properties": {
-    //         "id": 3,
-    //         "title": "Manns",
-    //         "zoom": 10,
-    //     }
-    // },
+    {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [35.875036, -75.771055]
+        },
+        "properties": {
+            "id": 3,
+            "title": "Manns",
+            "zoom": 10,
+        }
+    },
     {
         "type": "Feature",
         "geometry": {

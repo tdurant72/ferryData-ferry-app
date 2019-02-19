@@ -53,3 +53,27 @@ div#search-area {
     left:20px;
     top:-1px;
   }
+div#legend{
+  padding: 10px;
+  margin-top: 10px;
+  border: 2px solid #2c3e50;
+  max-height: 85px;
+}
+#legend>h4 {
+  font-size: 1em;
+}
+  div#legend-body {
+    display: flex;
+    align-content: space-between;
+    align-items: center;
+    justify-content: center;
+}
+div#legend-body>p{
+  font-size: 12px;
+}
+
+#legend-body>img {
+    width: 24px;
+    height: auto;
+    margin: 0px 10px;
+}

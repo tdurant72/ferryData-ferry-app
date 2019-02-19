@@ -167,6 +167,19 @@ const ports = [
       "address": "1650 Ferry Rd. Southport, NC 28461",
       "Site": "http://www.southport-oakisland.com/"
     }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-75.769420, 35.882730]
+    },
+    "properties": {
+      "title": "Manns Ferry Terminal",
+      "phone": "252.473.3461",
+      "address": "8550 Shipyard Road Manns Harbor, NC 27953",
+      "Site": "https://www.outerbanks.org/"
+    }
   }
 ]
 export default ports
