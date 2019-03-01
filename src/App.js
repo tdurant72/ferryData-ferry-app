@@ -11,6 +11,7 @@ import Map from './components/Map'
 
 import axios from "axios";
 import ports from './data/ports'
+import views from './data/views'
 
 const API_KEY = "80e61cf4-541b-4651-8228-6376d80567f7";
 const proxy = "https://cors-anywhere.herokuapp.com/";
@@ -24,7 +25,7 @@ class App extends Component {
     ncferries: [],
     pins: [],
     ncPins: [],
-    // pin: this.filteredFerries,
+    terminalPins: [],
     ncPinData: [],
     filterPin: this.props.pins,
     ferryData: null,
@@ -32,7 +33,8 @@ class App extends Component {
     map: null,
     search: "",
     isLoading: true,
-
+    views: [],
+    terminals: [],
     fetchingMessage: 'Data Loading',
     failMessage: 'Data failed to load, try again later.'
   };
@@ -45,13 +47,11 @@ class App extends Component {
       )
       .then(response => {
         let ncFerries = response.data;
-        this.setState(
-          {
-            ncferries: response.data.features,
-          },
-        );
-        this.setState({ ncPinData: [], isLoading: false })
+        this.setState(() => ({ ncferries: response.data.features, ncPinData: [] }))
       })
+      .then(
+        this.setState(() => ({ isLoading: false, terminals: ports, views: views }))
+      )
 
       .catch(error => {
         console.log(error);

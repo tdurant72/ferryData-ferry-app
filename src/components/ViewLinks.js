@@ -15,7 +15,9 @@ class ViewLinks extends React.Component {
         this.props.onClickView(this.props);
         //console.log(this.props);
     }
+
     render() {
+        //console.log(this.props)
         return (
             <span style={linkStyle}
                 onClick={this.onHandleView.bind(this, this.state.updatedView)} >

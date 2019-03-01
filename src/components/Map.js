@@ -15,7 +15,7 @@ class Map extends Component {
         ferries: [],
         selectedView: [],
         VesselIDs: [],
-        terminals: [],
+        //terminals: [],
         terminalLocation: null,
         terminalPushpin: null,
         anchor: null,
@@ -26,7 +26,8 @@ class Map extends Component {
         filteredFerries: [],
         views: [],
         newView: [],
-        layer: null
+        layer: null,
+        bingLocation: null
 
     }
     /* init*/
@@ -34,24 +35,24 @@ class Map extends Component {
         this.renderMap()
         // this.getNCFerries()
         //setInterval(this.getNCFerries, 30000)
-        this.setState({ terminals: ports, terminalPins: ports, views: views })
+        //this.setState({ terminals: ports, terminalPins: ports, views: views })
         let pins = [];
         // this.getAllTerminals().then(this.setTerminals)
-
+        //console.log(this.props.data.views)
 
     };
 
 
     /* render data */
-    renderMap = () => {
+    renderMap = async () => {
         loadScript(
             "https://www.bing.com/api/maps/mapcontrol?key=AsYvNI-GHrtArcRybTU256h6zvO5I3G9zzdC0kFwiXkdoA81Ux9RRPSjxm_o_Aqi&callback=loadMapScenario"
         );
         window.loadMapScenario = this.loadMapScenario;
     };
     loadMapScenario = async () => {
-        let lat = this.state.views[0].geometry.coordinates[0];
-        let lng = this.state.views[0].geometry.coordinates[1];
+        let lat = this.props.data.views[0].geometry.coordinates[0];
+        let lng = this.props.data.views[0].geometry.coordinates[1];
         let center = lat + lng;
 
         const map = new window.Microsoft.Maps.Map
@@ -59,20 +60,21 @@ class Map extends Component {
                 //center: new window.Microsoft.Maps.Location(47.982295, -122.536867),
                 center: new window.Microsoft.Maps.Location(lat, lng),
                 mapTypeId: window.Microsoft.Maps.MapTypeId.road,
-                zoom: this.state.views[0].properties.zoom
+                zoom: this.props.data.views[0].properties.zoom
             });
 
         const infobox = new window.Microsoft.Maps.Infobox
-        let terminalLocation = null;
+        //let terminalLocation = null;
         let terminalPushpin = new window.Microsoft.Maps.Pushpin(lat, lng)
         var layer = new window.Microsoft.Maps.Layer();
+        let bingLocation = new window.Microsoft.Maps.Location(lat, lng);
         // console.log(terminalPushpin)
         // const terminalLocation = new window.Microsoft.Maps.Location(this.state.terminalLocation)
         let anchor = new window.Microsoft.Maps.Point(0, 0)
         // this.setState({ map, infobox, terminalPushpin, terminalLocation, anchor });
 
-        this.setState({ map, terminalPushpin, anchor, layer });
-
+        let terminalPins = this.props.terminalPins;
+        this.setState(() => ({ map, terminalPushpin, bingLocation, anchor, layer }))
         //console.log(this.state.terminalPushpin)
         //this.renderTerminals()
         this.renderNCferryPins()
@@ -80,6 +82,7 @@ class Map extends Component {
         map.layers.insert(layer);
         layer.add(terminalPushpin);
         // this.updateTerminalData()
+        console.log(this.state.bingLocation)
     };
 
 
@@ -221,7 +224,7 @@ class Map extends Component {
             this.state.map.entities.push(ncPin);
         });
 
-        this.renderTerminals();
+        // this.renderTerminals();
     }
     createFerryIcon(heading) {
 
@@ -235,7 +238,7 @@ class Map extends Component {
         var terminalIcon =
             '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 23"><defs><style>.cls-1,.cls-2,.cls-3,.cls-4{fill:none;stroke-miterlimit:10;}.cls-1,.cls-4{stroke:#000;}.cls-2,.cls-3{stroke:#0071bc;}.cls-2,.cls-4{stroke-width:2px;}.cls-3,.cls-4{stroke-linecap:round;}.cls-3{stroke-width:3px;}</style></defs><title>anchorai</title><path class="cls-1" d="M11.75,14.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,14.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,18.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,21.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,18.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,21.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,21.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,18.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,18.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,21.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,21.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,18.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,18.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,21.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,21.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,19.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M11.75,19.5" transform="translate(-3.75 -0.5)"/><path class="cls-1" d="M23.5,21.5" transform="translate(-3.75 -0.5)"/><circle class="cls-2" cx="8" cy="3.5" r="2.5"/><line class="cls-3" x1="8" y1="21" x2="8" y2="7"/><path class="cls-4" d="M11.75,18" transform="translate(-3.75 -0.5)"/><path class="cls-4" d="M11.75,21" transform="translate(-3.75 -0.5)"/><path class="cls-4" d="M11.75,18" transform="translate(-3.75 -0.5)"/><path class="cls-3" d="M18.25,16c0,2.21-3.14,6-6.73,6s-6.27-3.79-6.27-6" transform="translate(-3.75 -0.5)"/><line class="cls-2" x1="4.5" y1="9" x2="11.5" y2="9"/></svg>';
         //console.log(this.state.terminals)
-        this.state.terminals.forEach(terminal => {
+        this.props.data.terminals.forEach(terminal => {
             let terminalLocation = new window.Microsoft.Maps.Location(
                 terminal.geometry.coordinates[1],
                 terminal.geometry.coordinates[0]
@@ -321,16 +324,19 @@ class Map extends Component {
             });
 
             // this.state.terminalPins.push(terminalPin);
-            this.state.map.entities.push(terminalPin);
+            //this.state.map.entities.push(terminalPin);
+            this.state.map.entities.concat([terminalPin])
         });
         this.setState({ terminalPins });
         //console.log(this.state.map.entities);
     }
+    componentDidUpdate() {
 
+    }
 
 
     render() {
-        const viewLinks = this.state.views.map((view, index) => (
+        const viewLinks = this.props.data.views.map((view, index) => (
             <ViewLinks
                 key={view.properties.id}
                 index={view.properties.id}
@@ -339,18 +345,20 @@ class Map extends Component {
                 onClickView={this.onClickView.bind(this, view)}
             />
         ))
-        // const terminals = this.state.terminals.map((terminal, index) => (
-        //     <Terminals
-        //         key={index}
-        //         index={index}
 
-        //         terminalLocation={terminal.geometry.coordinates}
-        //         terminalPushpin={this.state.terminalPushpin}
-        //         anchor={this.state.anchor}
-        //         infobox={this.state.infobox}
-        //         {...terminal}
-        //     />
-        // ))
+        const terminals = this.props.data.terminals.map((terminal, index) => (
+            <Terminals
+                key={index}
+                index={index}
+
+                terminalLocation={terminal.geometry.coordinates}
+                terminalPushpin={this.state.terminalPushpin}
+                bingLocation={this.state.bingLocation}
+                anchor={this.state.anchor}
+                infobox={this.state.infobox}
+                {...terminal}
+            />
+        ))
         return (
             <div id="mapHolder">
                 <div id="mapTable">
@@ -358,7 +366,13 @@ class Map extends Component {
                     {viewLinks}
                 </div>
                 <div id="map" className="map" map={this.state.map}>
-                    {/* {terminals} */}
+                    {terminals}
+                    {/* <Terminals
+                        terminals={this.props.data.terminals}
+                        terminalPushpin={this.state.terminalPushpin}
+                        terminalPins={this.props.data.terminalPins}
+
+                    /> */}
                 </div>
             </div>
 
