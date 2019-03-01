@@ -3,12 +3,17 @@ import Moment from 'react-moment'
 import './Table.css'
 
 
-const linkStyle = {
-    color: "#2c3e50",
-    cursor: "pointer",
-    fontSize: "1em",
-    textDecoration: "underline",
-    padding: "10px 0px"
+const styles = {
+    links: {
+        color: "#2c3e50",
+        cursor: "pointer",
+        fontSize: "1em",
+        textDecoration: "underline",
+        padding: "10px 0px"
+    },
+    table: {
+    }
+
 }
 
 class Table extends Component {
@@ -22,7 +27,7 @@ class Table extends Component {
             <tr >
                 <td>
                     <span
-                        style={linkStyle}
+                        style={styles.links}
                         onClick={this.onHandleTableView.bind(this.state.updatedView)}
                     >{this.props.title}
                     </span>

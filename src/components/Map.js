@@ -159,18 +159,20 @@ class Map extends Component {
                 <div id="mapHolder">
 
                     <div id="mapTable">
+                        <div id="views">
+                            <h4>Terminal Area Views</h4>
+                            {this.state.views.map((view, index) => {
+                                return (
+                                    <ViewLinks
+                                        key={view.properties.id}
+                                        index={view.properties.id}
+                                        {...view}
+                                        onClickView={this.onClickView.bind(this, view)}
+                                    />
+                                )
+                            })}
+                        </div>
 
-                        <h4>Terminal Area Views</h4>
-                        {this.state.views.map((view, index) => {
-                            return (
-                                <ViewLinks
-                                    key={view.properties.id}
-                                    index={view.properties.id}
-                                    {...view}
-                                    onClickView={this.onClickView.bind(this, view)}
-                                />
-                            )
-                        })}
                         <div id="legend">
                             <h4>Legend</h4>
                             <div id="legend-body">

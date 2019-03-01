@@ -21,6 +21,7 @@ button:focus {
   padding: 30px;
   color: white;
   margin-bottom: 0.5rem;
+  border-bottom: 5px solid rgba(30, 43, 54, 0.5);
 }
 
 .App-title {

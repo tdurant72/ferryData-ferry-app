@@ -8,6 +8,7 @@ import ports from './data/ports'
 
 class App extends Component {
   state = {
+    code: null,
     ferries: [],
     ncferries: [],
     pins: [],
@@ -35,11 +36,12 @@ class App extends Component {
       .then(response => {
 
         let timeStamp = Date.now();
-        this.setState(() => ({ ncferries: response.data.features, ncPinData: [], terminals: ports, terminalPins: ports, timeStamp, filteredFerries: response.data.features }))
+        this.setState(() => ({ ncferries: response.data.features, ncPinData: [], terminals: ports, terminalPins: ports, timeStamp, filteredFerries: response.data.features, code: response.data.crs.properties.code }))
 
         // console.log(response.data)
       }).then((resonse) => {
-        this.setState(() => ({ isLoading: false, }))
+        this.setState(() => ({ isLoading: false, }));
+        console.log(this.state.code)
       })
 
       .catch(error => {
@@ -53,7 +55,7 @@ class App extends Component {
   componentDidMount = async () => {
     this.startCount()
     this.getNCFerries()
-    setInterval(this.getNCFerries, 60000)
+    setInterval(this.getNCFerries, 30000)
 
   };
 
@@ -78,7 +80,7 @@ class App extends Component {
 
         <div id="content-wrapper">
           {
-            this.state.isLoading === true ?
+            this.state.isLoading === true || this.state.ncferries.length === 0 ?
               <Loader
                 isLoading={this.state.isLoading}
                 failMessage={this.state.failMessage}

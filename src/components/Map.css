@@ -2,13 +2,21 @@
 div#mapHolder {
     display: flex;
 }
-#mapTable>h4 {
+div#mapTable {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
+#views>h4 {
   margin-top: 20px;
   
 }
-div#mapTable {
+div#views {
     max-width: 300px;
-    padding-right: 20px;
+    /* padding-right: 20px; */
+    margin: 10px;
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.5);
+    border: 1px solid #2c3e50;
 }
 div#search-area {
   display: flex;
@@ -22,8 +30,14 @@ div#search-area {
   font-weight: 300;
   font-size: 1.1em;
 }
-#mapTable > span {
+#views > span {
     display: flex;
+    transition: all 0.8s ease-out;
+}
+#views>span:hover {
+  /* background-color: #f1f0f0; */
+  background-color: #cdcdcd;
+  
 }
 #map{
     flex:2;
@@ -55,9 +69,10 @@ div#search-area {
   }
 div#legend{
   padding: 10px;
-  margin-top: 10px;
-  border: 2px solid #2c3e50;
+  margin: 10px;
+  /* border: 2px solid #2c3e50; */
   max-height: 85px;
+  /* box-shadow: 0px 2px 1px 2px rgba(0, 0, 0, 0.3) */
 }
 #legend>h4 {
   font-size: 1em;
