@@ -20,7 +20,8 @@ button:focus {
   height: 90px;
   padding: 30px;
   color: white;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 5px solid rgba(30, 43, 54, 0.5);
 }
 
 .App-title {
@@ -29,7 +30,7 @@ button:focus {
 
 div#content-wrapper {
   /* display: flex; */
-  padding-top: 20px;
+
   max-width: 1100px;
   margin: 0 auto;
 }
@@ -158,4 +159,31 @@ input:-webkit-autofill {
   font-size: 1rem;
   text-transform: uppercase;
   font-weight: 500;
+}
+
+/*******Loader*******/
+.loader {
+  position: absolute;
+  top: calc(50% - 4em);
+  left: calc(50% - 4em);
+  width: 6em;
+  height: 6em;
+  border: 1.1em solid rgba(0, 0, 0, 0.2);
+  border-left: 1.1em solid #000000;
+  border-radius: 50%;
+  animation: load8 1.1s infinite linear;
+  transition: opacity 0.3s;
+}
+
+.loader--hide {
+  opacity: 0;
+}
+
+@keyframes load8 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

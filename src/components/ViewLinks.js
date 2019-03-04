@@ -5,7 +5,7 @@ const linkStyle = {
     cursor: "pointer",
     fontSize: "1em",
     borderBottom: "1px rgb(44,62,80) solid",
-    padding: "10px 0px"
+    padding: "10px 5px"
 }
 
 class ViewLinks extends React.Component {
